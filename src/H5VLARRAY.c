@@ -114,7 +114,8 @@ herr_t H5VLARRAYmake( hid_t loc_id,
    else if (strcmp(complib, "blosc") == 0) {
      cd_values[4] = compress;
      cd_values[5] = shuffle;
-     if ( H5Pset_filter( plist_id, FILTER_BLOSC, H5Z_FLAG_OPTIONAL, 6, cd_values) < 0 )
+     cd_values[6] = BLOSC_BLOSCLZ_FORMAT;
+     if ( H5Pset_filter( plist_id, FILTER_BLOSC, H5Z_FLAG_OPTIONAL, 7, cd_values) < 0 )
        return -1;
    }
    /* The Blosc compressor can use other compressors */
